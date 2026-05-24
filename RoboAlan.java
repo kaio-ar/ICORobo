@@ -8,9 +8,11 @@ public class SilvioSantos extends Robot {
     public void run() {
 
         // CORES DO ROBO
+        
         setColors(Color.black, Color.red, Color.white);
 
         // LOOP PRINCIPAL, EXECUTA OS COMANDO ABAIXO SEM PARAR
+        
         while (true) {
 
             // Anda para frente
@@ -28,26 +30,40 @@ public class SilvioSantos extends Robot {
    
     public void onScannedRobot(ScannedRobotEvent e) {
 
-        fire(1);
-    }
+       // Se estiver perto, atira com força maxima para causar maior dano
+       
+	if (e.getDistance() < 150) {
+    		fire(3);
+	} 
+
+	// Senão, dá um tiro fraco para economizar energia	
+
+	else {
+    		fire(1);
+   	 }
 
     //QUANDO BATE NA PAREDE
 	
     public void onHitWall(HitWallEvent e) {
 
         
-        back(50);
+        back(80);
 
-        turnRight(90);
+        turnRight(120);
     }
 
     // QUANDO FOR ATINGIDO
     public void onHitByBullet(HitByBulletEvent e) {
 
+        // Movimenta para escapar dos tiros
         
         ahead(50);
 
 
         turnLeft(45);
+        
+        // Contra-ataca com um disparo forte
+        
+        fire(2);
     }
 }
