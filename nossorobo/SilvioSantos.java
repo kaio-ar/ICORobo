@@ -9,9 +9,9 @@ import java.awt.Color;
  */
 public class SilvioSantos extends Robot
 {
-	/**
-	 * run: SilvioSantos's default behavior
-	 */
+	
+	// run: SilvioSantos's default behavior
+	
 	public void run() {
 		// Initialization of the robot should be put here
 
@@ -22,10 +22,9 @@ public class SilvioSantos extends Robot
 
 		// Robot main loop
 		while(true) {
-			// Replace the next 4 lines with any behavior you would like
-			
+						
 			// robo anda para frente
-			ahead(150);
+			ahead(100 + (int)(Math.random() * 100));
 
 			// robo para a esquerda
 			turnRight(90);
@@ -42,16 +41,24 @@ public class SilvioSantos extends Robot
 		}
 	}
 
+	
 	/**
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	
-	// 
+		
+
 	public void onScannedRobot(ScannedRobotEvent e) {
 		
-		// dispara um tiro 1 para economizar energia
-		fire(1);
-		
+		/** Caso inimigo a menos de 100 un, dispara tiro 2.
+		* Senão, dispara um tiro 1 para economizar energia.
+		*/
+		if (e.getDistance() < 100) {
+			fire(2);
+		} else {
+			fire(1);
+		}
+				
 		// gira um pouco o canhão
 		turnGunRight(15);
 	}
@@ -69,7 +76,7 @@ public class SilvioSantos extends Robot
 	}
 	
 	/**
-	 * onHitWall: What to do when you hit a wall
+	 * onHitWall: Recua 100un, vira direita 120un, avança 50un
 	 */
 	public void onHitWall(HitWallEvent e) {
 
@@ -78,5 +85,7 @@ public class SilvioSantos extends Robot
 		
 		// Vira para tentar encontrar outro caminho
 		turnRight(90);
+		
+	
 	}	
 }
