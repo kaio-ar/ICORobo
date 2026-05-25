@@ -2,8 +2,8 @@ package kr;
 import robocode.*;
 import java.awt.Color;
 
-// API help : https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html
 
+<<<<<<< HEAD:nossorobo/SilvioSantos.java
 /**
  * SilvioSantos - a robot by (your name here)
  */
@@ -14,33 +14,42 @@ public class SilvioSantos extends Robot
 	
 	public void run() {
 		// Initialization of the robot should be put here
+=======
+public class SilvioSantos extends Robot {
+>>>>>>> alan:robokaio/SilvioSantos.java
 
-		// After trying out your robot, try uncommenting the import at the top,
-		// and the next line:
+    public void run() {
 
-		setColors(Color.black,Color.red,Color.white); // body,gun,radar
+        // CORES DO ROBO
+        setColors(Color.black, Color.red, Color.white);
 
+<<<<<<< HEAD:nossorobo/SilvioSantos.java
 		// Robot main loop
 		while(true) {
 						
 			// robo anda para frente
 			ahead(100 + (int)(Math.random() * 100));
+=======
+        // LOOP PRINCIPAL, EXECUTA OS COMANDO ABAIXO SEM PARAR
+        while (true) {
+>>>>>>> alan:robokaio/SilvioSantos.java
 
-			// robo para a esquerda
-			turnRight(90);
+            // Anda para frente
+            ahead(100);
 
-			// robo gira canhao procurando inimigos
-			turnGunRight(360);
+            // Vira um pouco
+            turnRight(90);
 
-			// robo anda para tras
-			back(100);
+            // Procura inimigos
+            turnGunRight(360);
+        }
+    }
 
-			// robo vira para a esquerda
-			turnLeft(45);
-			
-		}
-	}
+   // QUANDO ENCONTRAR UM INIMIGO
+   
+    public void onScannedRobot(ScannedRobotEvent e) {
 
+<<<<<<< HEAD:nossorobo/SilvioSantos.java
 	
 	/**
 	 * onScannedRobot: What to do when you see another robot
@@ -89,3 +98,28 @@ public class SilvioSantos extends Robot
 	
 	}	
 }
+=======
+        fire(1);
+    }
+
+    //QUANDO BATE NA PAREDE
+	
+    public void onHitWall(HitWallEvent e) {
+
+        
+        back(50);
+
+        turnRight(90);
+    }
+
+    // QUANDO FOR ATINGIDO
+    public void onHitByBullet(HitByBulletEvent e) {
+
+        
+        ahead(50);
+
+
+        turnLeft(45);
+    }
+}
+>>>>>>> alan:robokaio/SilvioSantos.java
