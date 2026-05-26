@@ -1,3 +1,30 @@
+package KIDVARINHA2;
+import robocode.*;
+import java.awt.Color;
+
+public class DORA_AVENTURADA_2 extends AdvancedRobot {
+
+    boolean movingForward = true;
+
+public void run() {
+    setColors(Color.pink, Color.blue, Color.white);
+
+    while (true) {
+        ahead(100);
+    }
+
+public void run() {
+    setColors(Color.pink, Color.blue, Color.white);
+
+    while (true) {
+        if (movingForward) {
+            setAhead(150);
+        } else {
+            setBack(150);
+        }
+        execute();
+    }
+
 public void run() {
     setColors(Color.pink, Color.blue, Color.white);
 
@@ -14,4 +41,13 @@ public void run() {
         }
         execute();
     }
+
+public void onScannedRobot(ScannedRobotEvent e) {
+    double radarTurn = getHeading() + e.getBearing() - getRadarHeading();
+    setTurnRadarRight(radarTurn * 2);
+
+    double absoluteBearing = getHeading() + e.getBearing();
+    double gunTurn = absoluteBearing - getGunHeading();
+
+    setTurnGunRight(normalizeBearing(gunTurn));
 }
