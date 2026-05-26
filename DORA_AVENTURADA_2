@@ -1,6 +1,11 @@
 public void run() {
     setColors(Color.pink, Color.blue, Color.white);
 
+    setAdjustRadarForGunTurn(true);
+    setAdjustGunForRobotTurn(true);
+
+    setTurnRadarRight(Double.POSITIVE_INFINITY);
+
     while (true) {
         if (movingForward) {
             setAhead(150);
