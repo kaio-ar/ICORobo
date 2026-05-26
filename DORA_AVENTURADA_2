@@ -30,7 +30,7 @@ public class DORA_AVENTURADA_2 extends AdvancedRobot {
 
         double absoluteBearing = getHeading() + e.getBearing();
         double gunTurn = absoluteBearing - getGunHeading();
-        setTurnGunRight(gunTurn);
+        setTurnGunRight(normalizeBearing(gunTurn));
 
         double distance = e.getDistance();
         double firePower = Math.min(3, Math.max(1, 400 / distance));
@@ -44,5 +44,23 @@ public class DORA_AVENTURADA_2 extends AdvancedRobot {
         } else {
             setAhead(100);
         }
+    }
+
+    public void onHitByBullet(HitByBulletEvent e) {
+        movingForward = !movingForward;
+        setTurnRight(45);
+        setAhead(100);
+    }
+
+    public void onHitWall(HitWallEvent e) {
+        movingForward = !movingForward;
+        setBack(100);
+        setTurnRight(90);
+    }
+
+    public double normalizeBearing(double angle) {
+        while (angle > 180) angle -= 360;
+        while (angle < -180) angle += 360;
+        return angle;
     }
 }
