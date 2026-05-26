@@ -6,48 +6,43 @@ public class DORA_AVENTURADA_2 extends AdvancedRobot {
 
     boolean movingForward = true;
 
-public void run() {
-    setColors(Color.pink, Color.blue, Color.white);
+    public void run() {
+        setColors(Color.pink, Color.blue, Color.white);
 
-    while (true) {
-        ahead(100);
-    }
+        setAdjustRadarForGunTurn(true);
+        setAdjustGunForRobotTurn(true);
 
-public void run() {
-    setColors(Color.pink, Color.blue, Color.white);
+        setTurnRadarRight(Double.POSITIVE_INFINITY);
 
-    while (true) {
-        if (movingForward) {
-            setAhead(150);
-        } else {
-            setBack(150);
+        while (true) {
+            if (movingForward) {
+                setAhead(150);
+            } else {
+                setBack(150);
+            }
+            execute();
         }
-        execute();
     }
 
-public void run() {
-    setColors(Color.pink, Color.blue, Color.white);
+    public void onScannedRobot(ScannedRobotEvent e) {
+        double radarTurn = getHeading() + e.getBearing() - getRadarHeading();
+        setTurnRadarRight(radarTurn * 2);
 
-    setAdjustRadarForGunTurn(true);
-    setAdjustGunForRobotTurn(true);
+        double absoluteBearing = getHeading() + e.getBearing();
+        double gunTurn = absoluteBearing - getGunHeading();
+        setTurnGunRight(gunTurn);
 
-    setTurnRadarRight(Double.POSITIVE_INFINITY);
+        double distance = e.getDistance();
+        double firePower = Math.min(3, Math.max(1, 400 / distance));
 
-    while (true) {
-        if (movingForward) {
-            setAhead(150);
-        } else {
-            setBack(150);
+        if (getGunHeat() == 0) {
+            fire(firePower);
         }
-        execute();
+
+        if (distance < 150) {
+            setBack(100);
+        } else {
+            setAhead(100);
+        }
     }
-
-public void onScannedRobot(ScannedRobotEvent e) {
-    double radarTurn = getHeading() + e.getBearing() - getRadarHeading();
-    setTurnRadarRight(radarTurn * 2);
-
-    double absoluteBearing = getHeading() + e.getBearing();
-    double gunTurn = absoluteBearing - getGunHeading();
-
-    setTurnGunRight(normalizeBearing(gunTurn));
 }
