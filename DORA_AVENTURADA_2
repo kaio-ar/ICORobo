@@ -1,0 +1,9 @@
+package KIDVARINHA2;
+import robocode.*;
+import java.awt.Color;
+
+public class DORA_AVENTURADA_2 extends AdvancedRobot {
+
+    boolean movingForward = true;
+
+}
