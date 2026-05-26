@@ -1,66 +1,107 @@
 package KIDVARINHA2;
+
 import robocode.*;
 import java.awt.Color;
 
+// Classe principal do robô
 public class DORA_AVENTURADA_2 extends AdvancedRobot {
 
+    // Controle de direção
     boolean movingForward = true;
 
+    // Método principal
     public void run() {
+
         setColors(Color.pink, Color.blue, Color.white);
 
+        // Independência do radar
         setAdjustRadarForGunTurn(true);
+
+        // Independência da arma
         setAdjustGunForRobotTurn(true);
 
+        // Radar infinito
         setTurnRadarRight(Double.POSITIVE_INFINITY);
 
         while (true) {
+
             if (movingForward) {
+
                 setAhead(150);
+
             } else {
+
                 setBack(150);
+
             }
+
             execute();
         }
     }
 
+    // Detecta inimigo
     public void onScannedRobot(ScannedRobotEvent e) {
+
         double radarTurn = getHeading() + e.getBearing() - getRadarHeading();
         setTurnRadarRight(radarTurn * 2);
 
         double absoluteBearing = getHeading() + e.getBearing();
+
         double gunTurn = absoluteBearing - getGunHeading();
+
+        // Usa normalização
         setTurnGunRight(normalizeBearing(gunTurn));
 
         double distance = e.getDistance();
+
         double firePower = Math.min(3, Math.max(1, 400 / distance));
 
         if (getGunHeat() == 0) {
+
             fire(firePower);
+
         }
 
         if (distance < 150) {
+
             setBack(100);
+
         } else {
+
             setAhead(100);
+
         }
     }
 
+    // Ao ser atingido por bala
     public void onHitByBullet(HitByBulletEvent e) {
+
+        // Inverte direção
         movingForward = !movingForward;
+
+        // Movimento evasivo
         setTurnRight(45);
         setAhead(100);
     }
 
+    // Ao bater na parede
     public void onHitWall(HitWallEvent e) {
+
+        // Inverte direção
         movingForward = !movingForward;
+
+        // Afasta da parede
         setBack(100);
         setTurnRight(90);
     }
 
+    // Normaliza ângulo entre -180 e 180 
     public double normalizeBearing(double angle) {
+
         while (angle > 180) angle -= 360;
+
         while (angle < -180) angle += 360;
+
         return angle;
     }
 }
