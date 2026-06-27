@@ -5,10 +5,12 @@ Relatório – Atividade de Git com Robocode
 Atividade da disciplina ICO 7862 da 1 fase do curso de ADS do IFSC SJ
 
 1. Introdução
+
 O Robocode é uma plataforma que permite desenvolver robôs de batalha utilizando a linguagem Java. Cada robô é programado para executar ações automaticamente durante as batalhas, como movimentar-se, localizar adversários e efetuar disparos. A atividade utilizou esse ambiente como contexto para o aprendizado de programação e, principalmente, para a aplicação de conceitos de controle de versão com Git e GitHub.
 Desde o início do projeto, o grupo definiu que o foco da atividade seria compreender o fluxo de desenvolvimento colaborativo utilizando Git. Por esse motivo, optou-se por desenvolver um robô com funcionalidades simples, priorizando a organização do código, o versionamento e a integração das alterações realizadas por cada integrante. O robô final recebeu o nome SilvioSantos.
 
 2. Objetivos da Atividade
+
 Os principais objetivos da atividade foram:
 Desenvolver um robô funcional para o Robocode utilizando Java.
 Aplicar os conceitos básicos de programação orientada a objetos.
@@ -19,6 +21,7 @@ Praticar a criação de branches, commits, merges e resolução de conflitos.
 Integrar diferentes versões do robô até chegar a uma versão final estável.
 
 3. Descrição da Atividade
+
 O projeto foi desenvolvido pelos integrantes Kaio, Bruno e Alan. Inicialmente foi criado um repositório no GitHub, onde cada integrante passou a desenvolver sua própria versão do robô em uma branch individual.
 Cada membro implementou pequenas melhorias no código, criando versões sucessivas do robô. Periodicamente essas versões eram integradas por meio de operações de merge, permitindo reunir as contribuições de todos os integrantes em uma única versão do projeto. Após cada integração, o robô era executado no Robocode para verificar se todas as funcionalidades permaneciam funcionando corretamente.
 Durante o desenvolvimento foram criadas diferentes versões do robô, sendo a versão 3.0 escolhida como versão final por apresentar um comportamento estável e reunir as principais melhorias implementadas pelo grupo.
@@ -26,6 +29,7 @@ O robô final, denominado SilvioSantos, possui um comportamento simples. Sua mov
 A simplicidade dessas funcionalidades foi uma escolha do grupo, mantendo o projeto compatível com os objetivos da disciplina e concentrando os esforços na aprendizagem do uso do Git e do GitHub.
 
 4. Estrutura do Git Utilizada
+
 O projeto foi organizado em um repositório hospedado no GitHub.
 Para facilitar o desenvolvimento colaborativo foram utilizadas diferentes branches:
 main: versão principal do projeto.
@@ -38,12 +42,14 @@ Após períodos de desenvolvimento individual, as branches eram integradas por m
 Embora o GitHub permita a utilização de Pull Requests para integração das alterações, nesta atividade a integração foi realizada diretamente por meio dos comandos de merge do Git.
 
 5. Resultados e Aprendizados
+
 A atividade permitiu compreender o funcionamento do Git em um cenário de desenvolvimento colaborativo.
 Entre os principais aprendizados destacam-se a criação e utilização de branches, realização de commits, sincronização do repositório por meio de pull e push, integração de código utilizando merge e resolução de conflitos quando diferentes versões modificavam o mesmo arquivo.
 Também foi possível observar como pequenas alterações realizadas por diferentes integrantes podem ser reunidas em um único projeto sem perder o histórico de desenvolvimento.
 Do ponto de vista da programação, o grupo implementou funcionalidades básicas no robô, como movimentação, busca por inimigos, disparos com diferentes potências e reações simples aos eventos do ambiente. Embora o comportamento do robô não tenha sido desenvolvido com foco em alto desempenho competitivo, o resultado atendeu aos objetivos propostos pela atividade e demonstrou a aplicação dos conceitos estudados.
 
 6. Conclusão
+
 O desenvolvimento do robô SilvioSantos proporcionou uma experiência prática tanto com programação em Java quanto com o uso do Git e do GitHub.
 A utilização de branches individuais, commits frequentes e merges permitiu compreender como equipes organizam o desenvolvimento de software em projetos colaborativos. Além disso, a resolução de conflitos de merge mostrou a importância do controle de versão na integração segura das contribuições de diferentes desenvolvedores.
 Ao final da atividade foi obtido um robô funcional, cuja versão 3.0 reuniu as principais melhorias implementadas pelo grupo. Mais importante do que o desempenho do robô foi a experiência adquirida com o fluxo de desenvolvimento colaborativo, conhecimento que poderá ser aplicado em projetos futuros.
